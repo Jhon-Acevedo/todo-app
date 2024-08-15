@@ -26,7 +26,6 @@ public class TaskCommandController {
         this.taskDeleteHandler = taskDeleteHandler;
     }
 
-
     @PostMapping
     @Operation(summary = "Create a new task")
     public TaskDto create(@RequestBody TaskCreateCommand createCommand) {
