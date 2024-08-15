@@ -14,6 +14,8 @@ public interface TaskDtoMapper {
     @Mapping(source = "title", target = "title")
     @Mapping(source = "description", target = "description")
     @Mapping(source = "status", target = "status")
+    @Mapping(source = "user", target = "user")
     TaskDto toDto(Task domain);
+
 
 }

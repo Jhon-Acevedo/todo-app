@@ -1,5 +1,6 @@
 package com.mindhub.todolist.domain.task.model.dto;
 
+import com.mindhub.todolist.domain.user.model.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,5 +16,5 @@ public class TaskDto {
     String title;
     String description;
     String status;
-
+    User user;
 }
