@@ -20,6 +20,7 @@ public class UserMapper {
     public UserEntity toEntity(User userDomain) {
         if (userDomain == null) return null;
         return new UserEntity(
+                userDomain.getId(),
                 userDomain.getUsername(),
                 userDomain.getPassword(),
                 userDomain.getEmail()

@@ -40,12 +40,14 @@ public class TaskMapper {
         );
     }
 
-    public TaskEntity toCreateEntity(Task entity){
-        if(entity == null) return null;
+    public TaskEntity toCreateEntity(Task domain){
+        if(domain == null) return null;
+        UserEntity userEntity = userMapper.toEntity(domain.getUser());
         return new TaskEntity(
-                entity.getTitle(),
-                entity.getDescription(),
-                entity.getStatus()
+                domain.getTitle(),
+                domain.getDescription(),
+                domain.getStatus(),
+                userEntity
         );
     }
 

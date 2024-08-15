@@ -37,6 +37,7 @@ public class UserH2Repository implements IUserRepository {
     public User update(User user) {
         var userToUpdate = userMapper.toEntity(user);
         var userUpdated = userAdapterRepositoryJPA.save(userToUpdate);
+        System.out.println("UserH2Repository.update" + userUpdated);
         return userMapper.toDomain(userUpdated);
     }
 

@@ -22,19 +22,14 @@ public class TaskEntity {
     private String description;
     private Status status;
 
-    @ManyToOne(
-            fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            }
-    )
+    @ManyToOne(fetch = FetchType.LAZY)
     private UserEntity userEntity;
 
-    public TaskEntity(String title, String description, Status status) {
+    public TaskEntity(String title, String description, Status status, UserEntity userEntity) {
         this.title = title;
         this.description = description;
         this.status = status;
+        this.userEntity = userEntity;
     }
 
 }
