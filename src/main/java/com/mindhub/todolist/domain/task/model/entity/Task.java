@@ -31,7 +31,13 @@ public class Task {
         this.user = user;
     }
 
-    public Task requestToCreate(TaskCreateCommand createCommand) {
-        return new Task(null, createCommand.getTitle(), createCommand.getDescription(), Status.PENDING);
+    public Task requestToCreate(TaskCreateCommand createCommand, User user) {
+        return new Task(
+                null,
+                createCommand.getTitle(),
+                createCommand.getDescription(),
+                Status.PENDING,
+                user
+        );
     }
 }

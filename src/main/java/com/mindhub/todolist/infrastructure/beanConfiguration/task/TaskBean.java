@@ -5,6 +5,7 @@ import com.mindhub.todolist.domain.task.port.repository.ITaskRepository;
 import com.mindhub.todolist.domain.task.service.TaskCreateService;
 import com.mindhub.todolist.domain.task.service.TaskDeleteService;
 import com.mindhub.todolist.domain.task.service.TaskEditService;
+import com.mindhub.todolist.domain.user.port.dao.UserDao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,8 +13,8 @@ import org.springframework.context.annotation.Configuration;
 public class TaskBean {
 
     @Bean
-    public TaskCreateService taskCreateService(ITaskRepository taskRepository) {
-        return new TaskCreateService(taskRepository);
+    public TaskCreateService taskCreateService(ITaskRepository taskRepository, UserDao userDao) {
+        return new TaskCreateService(taskRepository, userDao);
     }
 
     @Bean
