@@ -1,6 +1,8 @@
 package com.mindhub.todolist.application.task.command;
 
+import com.mindhub.todolist.application.task.mapper.TaskCreateDtoMapper;
 import com.mindhub.todolist.application.task.mapper.TaskDtoMapper;
+import com.mindhub.todolist.domain.task.model.dto.TaskCreateDto;
 import com.mindhub.todolist.domain.task.model.dto.TaskDto;
 import com.mindhub.todolist.domain.task.model.dto.command.TaskCreateCommand;
 import com.mindhub.todolist.domain.task.model.entity.Task;
@@ -12,14 +14,14 @@ import org.springframework.stereotype.Component;
 public class TaskCreateHandler {
 
     private final TaskCreateService taskCreateService;
-    private final TaskDtoMapper taskDtoMapper;
+    private final TaskCreateDtoMapper taskDtoMapper;
 
-    public TaskCreateHandler(TaskCreateService taskCreateService, TaskDtoMapper taskDtoMapper) {
+    public TaskCreateHandler(TaskCreateService taskCreateService, TaskCreateDtoMapper taskDtoMapper) {
         this.taskCreateService = taskCreateService;
         this.taskDtoMapper = taskDtoMapper;
     }
 
-    public TaskDto execute(TaskCreateCommand command) {
+    public TaskCreateDto execute(TaskCreateCommand command) {
         return taskDtoMapper.toDto(taskCreateService.execute(command));
     }
 }

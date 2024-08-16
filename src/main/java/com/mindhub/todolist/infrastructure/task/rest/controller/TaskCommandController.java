@@ -3,6 +3,7 @@ package com.mindhub.todolist.infrastructure.task.rest.controller;
 import com.mindhub.todolist.application.task.command.TaskCreateHandler;
 import com.mindhub.todolist.application.task.command.TaskDeleteHandler;
 import com.mindhub.todolist.application.task.command.TaskEditHandler;
+import com.mindhub.todolist.domain.task.model.dto.TaskCreateDto;
 import com.mindhub.todolist.domain.task.model.dto.TaskDto;
 import com.mindhub.todolist.domain.task.model.dto.command.TaskCreateCommand;
 import com.mindhub.todolist.domain.task.model.dto.command.TaskEditCommand;
@@ -27,8 +28,10 @@ public class TaskCommandController {
     }
 
     @PostMapping
-    @Operation(summary = "Create a new task")
-    public TaskDto create(@RequestBody TaskCreateCommand createCommand) {
+    @Operation(summary = "Create a new task",description = "STATUS:  PENDING,\n" +
+            "    IN_PROGRESS,\n" +
+            "    COMPLETED")
+    public TaskCreateDto create(@RequestBody TaskCreateCommand createCommand) {
         return taskCreateHandler.execute(createCommand);
     }
 
