@@ -33,12 +33,14 @@ public class UserCommandController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete a user")
     public ResponseEntity<?> deleteUserById(@PathVariable Long id) {
         userDeleteHandler.execute(id);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Edit a user")
     public UserDto userEdit(@RequestBody UserEditCommand userEditCommand,
                             @PathVariable Long id) {
         return userEditHandler.execute(userEditCommand, id);

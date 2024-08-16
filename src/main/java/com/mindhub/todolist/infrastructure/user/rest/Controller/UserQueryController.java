@@ -34,9 +34,4 @@ public class UserQueryController {
         return userByIdHandler.execute(id);
     }
 
-    @PostMapping("/{id}/tasks")
-    public void assignTasks(@PathVariable Long id , @RequestParam List<Long> tasksIds){
-//        userAssignTasksHandler.execute(id, tasksIds);
-    }
-
 }

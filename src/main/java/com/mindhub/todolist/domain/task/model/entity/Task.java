@@ -36,7 +36,7 @@ public class Task {
                 null,
                 createCommand.getTitle(),
                 createCommand.getDescription(),
-                Status.PENDING,
+                createCommand.getStatus(),
                 user
         );
     }
