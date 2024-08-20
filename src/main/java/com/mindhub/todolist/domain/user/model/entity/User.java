@@ -1,18 +1,22 @@
 package com.mindhub.todolist.domain.user.model.entity;
 
+import com.mindhub.todolist.domain.task.model.entity.Task;
 import com.mindhub.todolist.domain.user.model.dto.command.UserCreateCommand;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.Set;
 
 @Getter
 @NoArgsConstructor
 public class User {
 
     private Long id;
-    private String username;
-    private String password;
-    private String email;
+
+    @Setter
+    private String username, password, email;
 //    private Set<Task> tasks;
 
     public User(String username, String password, String email) {

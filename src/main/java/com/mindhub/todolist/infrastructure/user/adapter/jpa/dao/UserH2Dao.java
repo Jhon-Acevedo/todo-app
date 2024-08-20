@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Repository
@@ -39,5 +40,11 @@ public class UserH2Dao implements UserDao {
                 .stream()
                 .map(userMapper::toDomain)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<User> findByUserName(String username) {
+        return userAdapterRepositoryJPA.findByUsername(username)
+                .map(userMapper::toDomain);
     }
 }
