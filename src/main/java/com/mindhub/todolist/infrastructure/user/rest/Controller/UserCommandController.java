@@ -8,29 +8,25 @@ import com.mindhub.todolist.domain.user.model.dto.command.UserCreateCommand;
 import com.mindhub.todolist.domain.user.model.dto.command.UserEditCommand;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
 @Tag(name = "User")
+@AllArgsConstructor
 public class UserCommandController {
 
-    private final UserCreateHandler userCreateHandler;
+//    private final UserCreateHandler userCreateHandler;
     private final UserEditHandler userEditHandler;
     private final UserDeleteHandler userDeleteHandler;
 
-    public UserCommandController(UserCreateHandler userCreateHandler, UserEditHandler userEditHandler, UserDeleteHandler userDeleteHandler) {
-        this.userCreateHandler = userCreateHandler;
-        this.userEditHandler = userEditHandler;
-        this.userDeleteHandler = userDeleteHandler;
-    }
-
-    @PostMapping
-    @Operation(summary = "Create a new user")
-    public UserDto create(@RequestBody UserCreateCommand userCreateCommand) {
-        return userCreateHandler.execute(userCreateCommand);
-    }
+//    @PostMapping
+//    @Operation(summary = "Create a new user")
+//    public UserDto create(@RequestBody UserCreateCommand userCreateCommand) {
+//        return userCreateHandler.execute(userCreateCommand);
+//    }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete a user")

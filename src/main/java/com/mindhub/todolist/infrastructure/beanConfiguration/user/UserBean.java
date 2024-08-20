@@ -34,4 +34,9 @@ public class UserBean {
         return new UserEditService(userDao, userRepository);
     }
 
+    @Bean
+    public UserByUsernameService userByUsernameService(UserDao userDao) {
+        return new UserByUsernameService(userDao);
+    }
+
 }
