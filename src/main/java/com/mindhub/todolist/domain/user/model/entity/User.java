@@ -17,12 +17,17 @@ public class User {
 
     @Setter
     private String username, password, email;
+
+    @Setter
+    private Rol rol;
+
 //    private Set<Task> tasks;
 
     public User(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.rol = new Rol("USER");
     }
 
     public User(Long id, String username, String password, String email) {
@@ -30,6 +35,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.rol = new Rol("USER");
     }
 
     public User requestToCreate(UserCreateCommand userCreateCommand) {

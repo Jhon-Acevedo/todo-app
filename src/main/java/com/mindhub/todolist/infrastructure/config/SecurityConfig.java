@@ -55,8 +55,9 @@ public class SecurityConfig {
                                 .requestMatchers("/api/auth/**", "/index.html").permitAll()
                                 .requestMatchers("/api/user/**").hasAuthority("USER")
                                 .requestMatchers("/api/admin/**").hasAuthority("ADMIN")
-                                .requestMatchers(HttpMethod.POST, "/users").permitAll() // Allow unauthenticated access to POST /users
-                                .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll() // Allow unauthenticated access to POST /api/auth/login
+                                .requestMatchers(HttpMethod.GET, "/public/welcome").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/users").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
                                 .requestMatchers("/users").authenticated()
                                 .anyRequest().authenticated()
                 )
