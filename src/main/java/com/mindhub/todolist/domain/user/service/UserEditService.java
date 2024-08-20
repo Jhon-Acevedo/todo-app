@@ -1,6 +1,7 @@
 package com.mindhub.todolist.domain.user.service;
 
 import com.mindhub.todolist.domain.user.model.dto.command.UserEditCommand;
+import com.mindhub.todolist.domain.user.model.entity.Rol;
 import com.mindhub.todolist.domain.user.model.entity.User;
 import com.mindhub.todolist.domain.user.port.dao.UserDao;
 import com.mindhub.todolist.domain.user.port.repository.IUserRepository;
@@ -22,7 +23,8 @@ public class UserEditService {
                 currentUser.getId(),
                 userEditCommand.getUsername(),
                 userEditCommand.getPassword(),
-                userEditCommand.getEmail()
+                userEditCommand.getEmail(),
+                currentUser.getRol()
         );
         return userRepository.update(taskToUpdate);
     }

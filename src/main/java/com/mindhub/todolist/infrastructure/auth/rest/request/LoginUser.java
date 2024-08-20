@@ -1,4 +1,4 @@
-package com.mindhub.todolist.infrastructure.auth.rest.dto;
+package com.mindhub.todolist.infrastructure.auth.rest.request;
 
 public record LoginUser(String username, String password) {
 }

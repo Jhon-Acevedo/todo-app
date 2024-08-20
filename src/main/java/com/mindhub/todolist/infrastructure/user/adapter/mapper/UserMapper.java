@@ -1,11 +1,18 @@
 package com.mindhub.todolist.infrastructure.user.adapter.mapper;
 
+import com.mindhub.todolist.domain.user.model.entity.Rol;
 import com.mindhub.todolist.domain.user.model.entity.User;
+import com.mindhub.todolist.infrastructure.user.adapter.entity.RolEntity;
 import com.mindhub.todolist.infrastructure.user.adapter.entity.UserEntity;
+import com.mindhub.todolist.infrastructure.user.adapter.jpa.IRolAdapterRepositoryJPA;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@AllArgsConstructor
 public class UserMapper {
+
+    private IRolAdapterRepositoryJPA rolRepository;
 
     public User toDomain(UserEntity userEntity) {
         if (userEntity == null) return null;
@@ -13,7 +20,8 @@ public class UserMapper {
                 userEntity.getId(),
                 userEntity.getUsername(),
                 userEntity.getPassword(),
-                userEntity.getEmail()
+                userEntity.getEmail(),
+                toDomain(userEntity.getRol())
         );
     }
 
@@ -23,7 +31,8 @@ public class UserMapper {
                 userDomain.getId(),
                 userDomain.getUsername(),
                 userDomain.getPassword(),
-                userDomain.getEmail()
+                userDomain.getEmail(),
+                toEntity(userDomain.getRol())
         );
     }
 
@@ -32,8 +41,24 @@ public class UserMapper {
         return new UserEntity(
                 userDomain.getUsername(),
                 userDomain.getPassword(),
-                userDomain.getEmail()
+                userDomain.getEmail(),
+                rolRepository.findById(userDomain.getRol().getId()).orElse(null)
         );
     }
 
+    private Rol toDomain(RolEntity rolEntity) {
+        if (rolEntity == null) return null;
+        return new Rol(
+                rolEntity.getId(),
+                rolEntity.getName()
+        );
+    }
+
+    private RolEntity toEntity(Rol rol) {
+        if (rol == null) return null;
+        return new RolEntity(
+                rol.getId(),
+                rol.getName()
+        );
+    }
 }
