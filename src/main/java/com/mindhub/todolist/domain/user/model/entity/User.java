@@ -21,28 +21,30 @@ public class User {
     @Setter
     private Rol rol;
 
-//    private Set<Task> tasks;
+    private Set<Task> tasks;
 
-    public User(String username, String password, String email) {
+    public User(String username, String password, String email, Rol rol) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.rol = new Rol("USER");
+        this.rol = rol;
     }
 
-    public User(Long id, String username, String password, String email) {
+    public User(Long id, String username, String password, String email, Rol rol) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
-        this.rol = new Rol("USER");
+        this.rol = rol;
     }
 
     public User requestToCreate(UserCreateCommand userCreateCommand) {
-       return new User(
-               userCreateCommand.getUsername(),
-               userCreateCommand.getPassword(),
-               userCreateCommand.getEmail());
+        return new User(
+                userCreateCommand.getUsername(),
+                userCreateCommand.getPassword(),
+                userCreateCommand.getEmail(),
+                new Rol(userCreateCommand.getRolId(), null)
+        );
     }
 
 }

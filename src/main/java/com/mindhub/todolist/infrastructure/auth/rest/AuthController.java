@@ -1,10 +1,9 @@
 package com.mindhub.todolist.infrastructure.auth.rest;
 
 import com.mindhub.todolist.application.user.command.UserCreateHandler;
-import com.mindhub.todolist.domain.user.model.dto.UserDto;
 import com.mindhub.todolist.domain.user.model.dto.command.UserCreateCommand;
 import com.mindhub.todolist.infrastructure.auth.config.JwtUtils;
-import com.mindhub.todolist.infrastructure.auth.rest.dto.LoginUser;
+import com.mindhub.todolist.infrastructure.auth.rest.request.LoginUser;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
@@ -48,7 +47,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    @Operation(summary = "Create a new user")
+    @Operation(summary = "Create a new user", description = "Roles: 1 - ADMIN, 2 - USER")
     public ResponseEntity<?> create(@RequestBody UserCreateCommand userCreateCommand) {
         var response = userCreateHandler.execute(userCreateCommand);
         return new ResponseEntity<>(response, ResponseEntity.status(201).build().getStatusCode());
