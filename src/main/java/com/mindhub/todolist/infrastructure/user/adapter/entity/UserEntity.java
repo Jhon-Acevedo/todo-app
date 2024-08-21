@@ -10,7 +10,6 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "users")
-@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 public class UserEntity {
@@ -27,6 +26,9 @@ public class UserEntity {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "rol_id", referencedColumnName = "id")
     private RolEntity rol;
+
+    public UserEntity() {
+    }
 
     public UserEntity(String username, String password, String email, RolEntity rol) {
         this.username = username;

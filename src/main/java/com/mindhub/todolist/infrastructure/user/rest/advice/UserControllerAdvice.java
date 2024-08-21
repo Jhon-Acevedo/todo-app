@@ -1,5 +1,6 @@
 package com.mindhub.todolist.infrastructure.user.rest.advice;
 
+import com.mindhub.todolist.domain.user.model.exception.RoleException;
 import com.mindhub.todolist.domain.user.model.exception.UserException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,11 @@ public class UserControllerAdvice {
     @ExceptionHandler(UserException.class)
     public ResponseEntity<?> handleUserEmptyException(UserException emptyUserException) {
         return new ResponseEntity<>(emptyUserException.getMessageError(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(RoleException.class)
+    public ResponseEntity<?> handleRoleException(RoleException roleException) {
+        return new ResponseEntity<>(roleException.getMessageError(), HttpStatus.NOT_FOUND);
     }
 
 }

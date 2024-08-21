@@ -53,11 +53,10 @@ public class SecurityConfig {
                         authorizeRequests
                                 .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/h2-console/**").permitAll()
                                 .requestMatchers("/api/auth/**", "/index.html").permitAll()
-                                .requestMatchers("/api/user/**").hasAuthority("USER")
                                 .requestMatchers("/api/admin/**").hasAuthority("ADMIN")
                                 .requestMatchers(HttpMethod.GET, "/public/welcome").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/users").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
+                                .requestMatchers(HttpMethod.DELETE, "/users/**").hasAuthority("ADMIN")
+                                .requestMatchers(HttpMethod.DELETE, "/tasks/**").hasAuthority("ADMIN")
                                 .requestMatchers("/users").authenticated()
                                 .anyRequest().authenticated()
                 )

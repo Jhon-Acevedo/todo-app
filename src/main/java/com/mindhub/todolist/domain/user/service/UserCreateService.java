@@ -3,6 +3,7 @@ package com.mindhub.todolist.domain.user.service;
 import com.mindhub.todolist.domain.user.model.dto.command.UserCreateCommand;
 import com.mindhub.todolist.domain.user.model.entity.User;
 import com.mindhub.todolist.domain.user.port.repository.IUserRepository;
+import com.mindhub.todolist.infrastructure.user.adapter.jpa.IRolAdapterRepositoryJPA;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class UserCreateService {
